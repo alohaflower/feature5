@@ -28,12 +28,21 @@ export const loginUser = (currUser) => {
   user.set("password", currUser.password);
   user.set("username", currUser.email);
 
-  console.log("User: ", user);
-  console.log();
   return user
     .logIn(user.email, user.password)
     .then((currUserSaved) => {
       return currUserSaved;
+    })
+    .catch((error) => {
+      alert(`Error: ${error.message}`);
+    });
+};
+
+// auth logout component
+export const logoutUser = () => {
+  return Parse.User.logOut()
+    .then(() => {
+      console.log("User logged out successfully.");
     })
     .catch((error) => {
       alert(`Error: ${error.message}`);

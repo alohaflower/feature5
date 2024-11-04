@@ -2,9 +2,10 @@ import {
     useEffect,
     useState,
   } from "react";
-  import { Link } from "react-router-dom";
-  import { getAllPatterns } from "../../Service/Pattern.js";
-  import MainList from "./MainList.js";
+import { Link } from "react-router-dom";
+import { getAllPatterns } from "../../Service/Pattern.js";
+import MainList from "./MainList.js";
+import { checkUser, logoutUser } from "../Auth/AuthService";
   
   const Main = () => {
     const [patterns, setPatterns] = useState([]);
@@ -14,6 +15,16 @@ import {
         setPatterns(patterns);
       });
     }, []);
+
+    const onSubmitHandler = (e) => {
+      console.log('submit handler');
+      if (!checkUser()) {
+        alert("You are not logged in.");
+      } else {
+        logoutUser();
+        alert("You have been logged out.");
+      }
+    };
   
     return (
         <div>
@@ -29,6 +40,11 @@ import {
         <Link to="/login">
           <button>Login</button>
         </Link>
+        <br />
+        <br />
+        <button onClick={onSubmitHandler}>
+          Logout
+        </button>
 
         <MainList patterns={patterns} />
       </div>
