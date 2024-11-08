@@ -1,12 +1,11 @@
+
 import Parse from "parse";
 
 //get all patterns
 export const getAllPatterns = async () => {
     const Pattern = Parse.Object.extend("plushies");
     const query = new Parse.Query(Pattern);
-
     let queryResults = await query.find();
-
     const formattedResults = queryResults.map((result) => ({
         id: result.id,
         imgName: result.get("imgName"),
