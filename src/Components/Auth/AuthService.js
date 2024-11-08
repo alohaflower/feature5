@@ -49,6 +49,7 @@ export const logoutUser = () => {
     });
 };
 
+// checks if user is authenticated
 export const checkUser = () => {
   return Parse.User.current()?.authenticated;
 };

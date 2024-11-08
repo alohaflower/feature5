@@ -7,14 +7,15 @@ const ProtectedRoute = ({ element: Component}) => {
     console.log("element: ", Component);
     const navigate = useNavigate();
     const goBackHandler = () => {
-      navigate("/");
+      navigate("/login");
     };
     if (checkUser()) {
       return <MainDetail />;
     } else {
       return (
         <div>
-          <p>Unauthorized!</p> <button onClick={goBackHandler}>Go Back.</button>
+          {/* Will send to login if pressed */}
+          <p>Unauthorized!</p> <button onClick={goBackHandler}>Go to Login.</button>
         </div>
       );
     }

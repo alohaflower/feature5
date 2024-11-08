@@ -19,6 +19,7 @@ const MainDetail = () => {
     }, []);
 
     return (
+      // TODO, future work: make it so users can leave their own reviews on plushies!
         <div>
             <div>
                 <Link to="/">Back</Link>
